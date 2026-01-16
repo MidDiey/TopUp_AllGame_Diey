@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diey Topup All Game</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(180deg,#2b0040,#120018);
+  color:#fff;
+}
+
+/* ===== PAGE ===== */
+.page{display:none; animation:fade .5s}
+.page.active{display:block}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+/* ===== BANNER ===== */
+.banner img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  display:block;
+}
+
+/* ===== TITLE ===== */
+.title{
+  margin:20px;
+  padding:14px;
+  background:#5a0aa6;
+  border-radius:14px;
+  text-align:center;
+  font-size:20px;
+  font-weight:bold;
+  box-shadow:0 0 20px #7f1cff;
+}
+
+/* ===== GAME GRID ===== */
+.games{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  padding:20px;
+}
+
+.game{
+  background:#222;
+  border-radius:16px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:.3s;
+}
+.game:hover{transform:scale(1.05)}
+
+.game img{
+  width:100%;
+  height:110px;
+  object-fit:cover;
+}
+.game div{
+  padding:10px;
+  text-align:center;
+  font-weight:bold;
+}
+
+/* ===== FORM ===== */
+.form{
+  padding:20px;
+}
+input{
+  width:100%;
+  padding:12px;
+  margin-bottom:12px;
+  border-radius:10px;
+  border:none;
+}
+
+/* ===== LIST ===== */
+.list{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.item{
+  background:#222;
+  border-radius:16px;
+  padding:16px;
+  text-align:center;
+  cursor:pointer;
+  transition:.25s;
+}
+.item:hover{transform:scale(1.05)}
+.item.active{outline:2px solid #22ff88}
+
+.amount{font-size:16px;font-weight:bold}
+.price{font-size:14px;color:#22ff88;margin-top:4px}
+
+/* ===== BUTTON ===== */
+.btn{
+  margin:20px;
+  padding:14px;
+  background:#22ff88;
+  color:#000;
+  text-align:center;
+  border-radius:14px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* ===== FOOTER ===== */
+.footer{
+  text-align:center;
+  padding:20px;
+  opacity:.7;
+}
+
+/* ===== FLOAT ===== */
+.float{
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.float a{
+  width:50px;height:50px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  text-decoration:none;
+}
+.wa{background:#25D366;color:#fff}
+.tg{background:#229ED9;color:#fff}
+</style>
+</head>
+
+<body>
+
+<!-- ================= PAGE 1 ================= -->
+<div id="home" class="page active">
+
+  <!-- BANNER -->
+  <div class="banner">
+    <!-- tukar gambar sendiri -->
+    <img src="banner.jpg">
+  </div>
+
+  <div class="title">🎮 DIEY TOPUP ALL GAME 🎮</div>
+
+  <div class="games">
+    <div class="game" onclick="openPage('ml')">
+      <img src="ml.jpg">
+      <div>Mobile Legends</div>
+    </div>
+    <div class="game" onclick="openPage('ff')">
+      <img src="ff.jpg">
+      <div>Free Fire</div>
+    </div>
+    <div class="game" onclick="openPage('pubg')">
+      <img src="pubg.jpg">
+      <div>PUBG Mobile</div>
+    </div>
+    <div class="game" onclick="openPage('efb')">
+      <img src="efb.jpg">
+      <div>eFootball</div>
+    </div>
+  </div>
+
+  <div class="footer">⭐ Trusted • Fast • Secure ⭐<br>© 2026 Diey Store Top Up</div>
+</div>
+
+<!-- ================= ML ================= -->
+<div id="ml" class="page">
+<div class="form">
+<h2>Mobile Legends</h2>
+<input id="ml_id" placeholder="User ID">
+<input id="ml_server" placeholder="Server ID">
+
+<div class="list">
+<div class="item" onclick="pick(this)"> <div class="amount">140 Diamond</div><div class="price">RM9.90</div></div>
+<div class="item" onclick="pick(this)"> <div class="amount">165 Diamond</div><div class="price">RM13.50</div></div>
+<div class="item" onclick="pick(this)"> <div class="amount">182 Diamond</div><div class="price">RM15.20</div></div>
+<div class="item" onclick="pick(this)"> <div class="amount">210 Diamond</div><div class="price">RM16.60</div></div>
+<div class="item" onclick="pick(this)"> <div class="amount">284 Diamond</div><div class="price">RM21.00</div></div>
+<div class="item" onclick="pick(this)"> <div class="amount">326 Diamond</div><div class="price">RM23.00</div></div>
+<div class="item" onclick="pick(this)"> <div class="amount">397 Diamond</div><div class="price">RM28.00</div></div>
+<div class="item" onclick="pick(this)"> <div class="amount">513 Diamond</div><div class="price">RM36.00</div></div>
+<div class="item" onclick="pick(this)"> <div class="amount">569 Diamond</div><div class="price">RM38.00</div></div>
+<div class="item" onclick="pick(this)"> <div class="amount">639 Diamond</div><div class="price">RM42.00</div></div>
+<div class="item" onclick="pick(this)"> <div class="amount">870 Diamond</div><div class="price">RM59.00</div></div>
+<div class="item" onclick="pick(this)"> <div class="amount">1071 Diamond</div><div class="price">RM74.00</div></div>
+<div class="item" onclick="pick(this)"> <div class="amount">1145 Diamond</div><div class="price">RM77.30</div></div>
+<div class="item" onclick="pick(this)"> <div class="amount">1355 Diamond</div><div class="price">RM86.00</div></div>
+<div class="item" onclick="pick(this)"> <div class="amount">1446 Diamond</div><div class="price">RM91.00</div></div>
+<div class="item" onclick="pick(this)"> <div class="amount">1530 Diamond</div><div class="price">RM97.00</div></div>
+</div>
+
+<div class="btn" onclick="submitOrder('Mobile Legends')">SUBMIT ORDER</div>
+<div class="btn" onclick="back()">← Kembali</div>
+</div>
+</div>
+
+<!-- ================= FF ================= -->
+<div id="ff" class="page">
+<div class="form">
+<h2>Free Fire</h2>
+<input id="ff_id" placeholder="User ID">
+
+<div class="list">
+<div class="item" onclick="pick(this)"><div class="amount">100 Diamond</div><div class="price">RM3.50</div></div>
+<div class="item" onclick="pick(this)"><div class="amount">210 Diamond</div><div class="price">RM8.00</div></div>
+<div class="item" onclick="pick(this)"><div class="amount">310 Diamond</div><div class="price">RM10.00</div></div>
+<div class="item" onclick="pick(this)"><div class="amount">400 Diamond</div><div class="price">RM15.00</div></div>
+<div class="item" onclick="pick(this)"><div class="amount">550 Diamond</div><div class="price">RM18.20</div></div>
+<div class="item" onclick="pick(this)"><div class="amount">625 Diamond</div><div class="price">RM21.00</div></div>
+<div class="item" onclick="pick(this)"><div class="amount">750 Diamond</div><div class="price">RM26.50</div></div>
+<div class="item" onclick="pick(this)"><div class="amount">859 Diamond</div><div class="price">RM28.66</div></div>
+<div class="item" onclick="pick(this)"><div class="amount">995 Diamond</div><div class="price">RM33.00</div></div>
+<div class="item" onclick="pick(this)"><div class="amount">1040 Diamond</div><div class="price">RM35.00</div></div>
+<div class="item" onclick="pick(this)"><div class="amount">1130 Diamond</div><div class="price">RM48.95</div></div>
+<div class="item" onclick="pick(this)"><div class="amount">1580 Diamond</div><div class="price">RM52.65</div></div>
+<div class="item" onclick="pick(this)"><div class="amount">2180 Diamond</div><div class="price">RM70.50</div></div>
+<div class="item" onclick="pick(this)"><div class="amount">2200 Diamond</div><div class="price">RM85.00</div></div>
+<div class="item" onclick="pick(this)"><div class="amount">3240 Diamond</div><div class="price">RM105.40</div></div>
+<div class="item" onclick="pick(this)"><div class="amount">4360 Diamond</div><div class="price">RM141.00</div></div>
+<div class="item" onclick="pick(this)"><div class="amount">5600 Diamond</div><div class="price">RM175.50</div></div>
+</div>
+
+<div class="btn" onclick="submitOrder('Free Fire')">SUBMIT ORDER</div>
+<div class="btn" onclick="back()">← Kembali</div>
+</div>
+</div>
+
+<!-- ================= PUBG ================= -->
+<div id="pubg" class="page">
+<div class="form">
+<h2>PUBG Mobile</h2>
+<input id="pubg_id" placeholder="Player ID">
+
+<div class="list">
+  <div class="item" onclick="pick(this)"><div class="amount">60 UC</div><div class="price">RM5.00</div></div>
+  <div class="item" onclick="pick(this)"><div class="amount">120 UC</div><div class="price">RM9.50</div></div>
+  <div class="item" onclick="pick(this)"><div class="amount">325 UC</div><div class="price">RM25.00</div></div>
+  <div class="item" onclick="pick(this)"><div class="amount">660 UC</div><div class="price">RM49.00</div></div>
+  <div class="item" onclick="pick(this)"><div class="amount">720 UC</div><div class="price">RM55.00</div></div>
+  <div class="item" onclick="pick(this)"><div class="amount">1800 UC</div><div class="price">RM129.00</div></div>
+  <div class="item" onclick="pick(this)"><div class="amount">3850 UC</div><div class="price">RM269.00</div></div>
+  <div class="item" onclick="pick(this)"><div class="amount">8100 UC</div><div class="price">RM529.00</div></div>
+</div>
+
+<div class="btn" onclick="submitOrder('PUBG Mobile')">SUBMIT ORDER</div>
+<div class="btn" onclick="back()">← Kembali</div>
+</div>
+</div>
+
+<!-- ================= eFOOTBALL ================= -->
+<div id="efb" class="page">
+<div class="form">
+<h2>eFootball</h2>
+
+<input id="efb_email" placeholder="Email">
+<input id="efb_pass" type="password" placeholder="Password">
+<input id="efb_device" placeholder="Device (Android / iOS)">
+<input id="efb_ign" placeholder="In Game Name">
+
+<div class="list">
+  <div class="item" onclick="pick(this)"><div class="amount">130 Coins</div><div class="price">RM4.90</div></div>
+  <div class="item" onclick="pick(this)"><div class="amount">300 Coins</div><div class="price">RM10.55</div></div>
+  <div class="item" onclick="pick(this)"><div class="amount">550 Coins</div><div class="price">RM18.90</div></div>
+  <div class="item" onclick="pick(this)"><div class="amount">750 Coins</div><div class="price">RM25.02</div></div>
+  <div class="item" onclick="pick(this)"><div class="amount">1040 Coins</div><div class="price">RM35.00</div></div>
+  <div class="item" onclick="pick(this)"><div class="amount">2130 Coins</div><div class="price">RM69.00</div></div>
+  <div class="item" onclick="pick(this)"><div class="amount">3250 Coins</div><div class="price">RM102.00</div></div>
+  <div class="item" onclick="pick(this)"><div class="amount">5700 Coins</div><div class="price">RM168.20</div></div>
+</div>
+
+<div class="btn" onclick="submitOrder('eFootball')">SUBMIT ORDER</div>
+<div class="btn" onclick="back()">← Kembali</div>
+</div>
+</div>
+
+<!-- ================= FLOAT ================= -->
+<div class="float">
+<a class="wa" href="https://wa.me/60175180249">💬</a>
+<a class="tg" href="https://t.me/madindindun0">✈️</a>
+</div>
+
+<script>
+let selectedText="";
+
+function openPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function back(){openPage('home')}
+
+function pick(el){
+  document.querySelectorAll('.item').forEach(i=>i.classList.remove('active'));
+  el.classList.add('active');
+  selectedText = el.innerText;
+}
+
+function submitOrder(game){
+  if(!selectedText){alert("Sila pilih item");return}
+  let msg = `${game}\n${selectedText}`;
+  window.open(`https://wa.me/60175180249?text=${encodeURIComponent(msg)}`);
+}
+</script>
+
+</body>
+</html>
