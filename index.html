@@ -1,319 +1,348 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Diey Topup All Game</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diey Store - Top Up Fast & Reliable</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --dark-blue: #020d1f;
+            --neon-blue: #00f2ff;
+            --mid-blue: #0066ff;
+            --deep-blue: #0a192f;
+            --glow: 0 0 15px rgba(0, 242, 255, 0.6);
+        }
 
-<style>
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:linear-gradient(180deg,#2b0040,#120018);
-  color:#fff;
-}
+        /* Base Setup */
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-/* ===== PAGE ===== */
-.page{display:none; animation:fade .5s}
-.page.active{display:block}
-@keyframes fade{from{opacity:0}to{opacity:1}}
+        body {
+            background-color: var(--dark-blue);
+            color: white;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-/* ===== BANNER ===== */
-.banner img{
-  width:100%;
-  height:200px;
-  object-fit:cover;
-  display:block;
-}
+        h1, h2, h3, .brand { font-family: 'Rajdhani', sans-serif; font-weight: 700; }
 
-/* ===== TITLE ===== */
-.title{
-  margin:20px;
-  padding:14px;
-  background:#5a0aa6;
-  border-radius:14px;
-  text-align:center;
-  font-size:20px;
-  font-weight:bold;
-  box-shadow:0 0 20px #7f1cff;
-}
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-/* ===== GAME GRID ===== */
-.games{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-  padding:20px;
-}
+        .page-transition { animation: fadeIn 0.5s ease-out forwards; }
 
-.game{
-  background:#222;
-  border-radius:16px;
-  overflow:hidden;
-  cursor:pointer;
-  transition:.3s;
-}
-.game:hover{transform:scale(1.05)}
+        .container { max-width: 1000px; margin: auto; padding: 20px; width: 100%; }
 
-.game img{
-  width:100%;
-  height:110px;
-  object-fit:cover;
-}
-.game div{
-  padding:10px;
-  text-align:center;
-  font-weight:bold;
-}
+        /* Banner */
+        .banner-container {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: var(--deep-blue);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid var(--neon-blue);
+            box-shadow: var(--glow);
+            margin-bottom: 20px;
+        }
+        .banner-container img { width: 100%; height: 100%; object-fit: cover; }
 
-/* ===== FORM ===== */
-.form{
-  padding:20px;
-}
-input{
-  width:100%;
-  padding:12px;
-  margin-bottom:12px;
-  border-radius:10px;
-  border:none;
-}
+        .promo-text { text-align: center; margin-bottom: 30px; }
+        .promo-text h2 { font-size: 2.2rem; color: var(--neon-blue); text-transform: uppercase; }
 
-/* ===== LIST ===== */
-.list{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-}
+        /* Game Grid */
+        .game-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;
+        }
+        .game-card {
+            background: var(--deep-blue);
+            border: 1px solid var(--mid-blue);
+            border-radius: 12px; overflow: hidden;
+            cursor: pointer; transition: 0.3s;
+        }
+        .game-card:hover { transform: scale(1.03); border-color: var(--neon-blue); box-shadow: var(--glow); }
+        .game-card img { width: 100%; height: 130px; object-fit: cover; }
+        .game-card h3 { padding: 10px; text-align: center; font-size: 1rem; }
 
-.item{
-  background:#222;
-  border-radius:16px;
-  padding:16px;
-  text-align:center;
-  cursor:pointer;
-  transition:.25s;
-}
-.item:hover{transform:scale(1.05)}
-.item.active{outline:2px solid #22ff88}
+        /* FAQ Section */
+        .faq-section { margin-top: 50px; }
+        .faq-item {
+            background: rgba(255,255,255,0.05);
+            margin-bottom: 10px; border-radius: 8px;
+            border: 1px solid var(--mid-blue);
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 15px; cursor: pointer; display: flex;
+            justify-content: space-between; align-items: center;
+            font-weight: 600; color: var(--neon-blue);
+        }
+        .faq-answer {
+            padding: 0 15px; max-height: 0; overflow: hidden;
+            transition: 0.3s ease-out; color: #ccc; font-size: 0.9rem;
+        }
+        .faq-item.active .faq-answer { padding: 15px; max-height: 200px; border-top: 1px solid var(--mid-blue); }
 
-.amount{font-size:16px;font-weight:bold}
-.price{font-size:14px;color:#22ff88;margin-top:4px}
+        /* Page 2 Styles */
+        #page2 { display: none; }
+        .section-box {
+            background: var(--deep-blue); border-radius: 15px;
+            padding: 20px; margin-bottom: 20px; border-left: 5px solid var(--neon-blue);
+        }
+        .input-group input {
+            width: 100%; padding: 12px; margin: 8px 0;
+            background: #000; border: 1px solid var(--mid-blue);
+            color: #fff; border-radius: 8px;
+        }
+        .diamond-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .diamond-item {
+            background: rgba(255,255,255,0.05); border: 1px solid var(--mid-blue);
+            padding: 15px; border-radius: 10px; cursor: pointer; text-align: center;
+        }
+        .diamond-item.selected { background: var(--mid-blue); border-color: var(--neon-blue); box-shadow: var(--glow); }
 
-/* ===== BUTTON ===== */
-.btn{
-  margin:20px;
-  padding:14px;
-  background:#22ff88;
-  color:#000;
-  text-align:center;
-  border-radius:14px;
-  font-weight:bold;
-  cursor:pointer;
-}
+        /* Buttons */
+        .submit-btn {
+            width: 100%; background: var(--neon-blue); color: #000;
+            padding: 15px; border: none; border-radius: 10px;
+            font-weight: bold; font-size: 1.1rem; cursor: pointer;
+        }
+        .back-btn {
+            background: transparent; border: 1px solid var(--neon-blue);
+            color: var(--neon-blue); padding: 8px 15px; border-radius: 5px;
+            cursor: pointer; margin-bottom: 20px;
+        }
 
-/* ===== FOOTER ===== */
-.footer{
-  text-align:center;
-  padding:20px;
-  opacity:.7;
-}
+        /* Footer */
+        footer {
+            margin-top: auto; padding: 30px 10px;
+            text-align: center; background: rgba(0,0,0,0.3);
+            border-top: 1px solid var(--mid-blue);
+            color: #888; font-size: 0.8rem;
+        }
 
-/* ===== FLOAT ===== */
-.float{
-  position:fixed;
-  right:16px;
-  bottom:16px;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-.float a{
-  width:50px;height:50px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:22px;
-  text-decoration:none;
-}
-.wa{background:#25D366;color:#fff}
-.tg{background:#229ED9;color:#fff}
-</style>
+        /* Floating buttons */
+        .float-btn {
+            position: fixed; bottom: 20px; width: 55px; height: 55px;
+            border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; color: white; font-size: 25px; z-index: 99;
+        }
+        .wa-btn { right: 20px; background: #25d366; }
+        .tele-btn { right: 85px; background: #0088cc; }
+
+        @media (max-width: 500px) {
+            .game-grid { grid-template-columns: repeat(2, 1fr); }
+            .promo-text h2 { font-size: 1.6rem; }
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- ================= PAGE 1 ================= -->
-<div id="home" class="page active">
+    <!-- Floating Buttons -->
+    <a href="https://wa.me/+60175180249" class="float-btn wa-btn"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://t.me/madindindun0" class="float-btn tele-btn"><i class="fab fa-telegram-plane"></i></a>
 
-  <!-- BANNER -->
-  <div class="banner">
-    <!-- tukar gambar sendiri -->
-    <img src="banner.jpg">
-  </div>
+    <!-- PAGE 1 -->
+    <div id="page1" class="page-transition">
+        <div class="container">
+            <div class="banner-container">
+                <img src="banner.jpg" alt="Banner 16:9">
+            </div>
 
-  <div class="title">🎮 DIEY TOPUP ALL GAME 🎮</div>
+            <div class="promo-text">
+                <h2>DIEY STORE</h2>
+                <p>Top Up Game Paling Pantas di Malaysia</p>
+            </div>
 
-  <div class="games">
-    <div class="game" onclick="openPage('ml')">
-      <img src="ml.jpg">
-      <div>Mobile Legends</div>
+            <div class="game-grid">
+                <div class="game-card" onclick="openGame('ml')">
+                    <img src="ml.jpg" alt="ML">
+                    <h3>Mobile Legends</h3>
+                </div>
+                <div class="game-card" onclick="openGame('ff')">
+                    <img src="ff.jpg" alt="FF">
+                    <h3>Free Fire</h3>
+                </div>
+                <div class="game-card" onclick="openGame('pubg')">
+                    <img src="pubg.jpg" alt="PUBG">
+                    <h3>PUBG Mobile</h3>
+                </div>
+                <div class="game-card" onclick="openGame('efb')">
+                    <img src="efb.jpg" alt="EFB">
+                    <h3>eFootball 2024</h3>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h2 style="color: var(--neon-blue); margin-bottom: 20px; border-bottom: 2px solid var(--neon-blue); display: inline-block;">FAQ / SOALAN LAZIM</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Berapa lama proses top up? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Kebiasaannya proses mengambil masa 1 hingga 10 minit sahaja selepas pembayaran disahkan.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Adakah Diey Store selamat? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Ya, kami adalah trusted seller. Segala transaksi dilakukan secara telus dan kami mempunyai ribuan testimoni pelanggan.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Apa jadi jika saya tersalah bagi ID? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Sila pastikan ID yang diberikan adalah betul. Pihak kami tidak akan bertanggungjawab jika item telah berjaya dihantar ke ID yang salah.
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="game" onclick="openPage('ff')">
-      <img src="ff.jpg">
-      <div>Free Fire</div>
+
+    <!-- PAGE 2 -->
+    <div id="page2">
+        <div class="container page-transition">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i> KEMBALI</button>
+            <h1 id="gameTitle" style="color: var(--neon-blue); margin-bottom: 20px;">GAME TITLE</h1>
+
+            <div class="section-box">
+                <h3>1. MAKLUMAT AKAUN</h3>
+                <div id="dynamicForm" class="input-group"></div>
+            </div>
+
+            <div class="section-box">
+                <h3>2. PILIH NOMINAL</h3>
+                <div id="diamondList" class="diamond-grid"></div>
+            </div>
+
+            <div class="section-box">
+                <h3>3. PEMBAYARAN (MALAYSIA)</h3>
+                <div class="pay-item" id="pay1" onclick="selectPay(this, 'TnG eWallet')">
+                    <span>TnG eWallet</span> <i class="fas fa-wallet"></i>
+                </div>
+                <div class="pay-item" id="pay2" onclick="selectPay(this, 'Bank Transfer')">
+                    <span>Bank Transfer</span> <i class="fas fa-university"></i>
+                </div>
+            </div>
+
+            <button class="submit-btn" onclick="sendOrder()">BELI SEKARANG <i class="fab fa-whatsapp"></i></button>
+        </div>
     </div>
-    <div class="game" onclick="openPage('pubg')">
-      <img src="pubg.jpg">
-      <div>PUBG Mobile</div>
-    </div>
-    <div class="game" onclick="openPage('efb')">
-      <img src="efb.jpg">
-      <div>eFootball</div>
-    </div>
-  </div>
 
-  <div class="footer">⭐ Trusted • Fast • Secure ⭐<br>© 2026 Diey Store Top Up</div>
-</div>
+    <footer>
+        <p>© 2026 Diey Store. All Rights Reserved.</p>
+        <p style="margin-top: 5px; opacity: 0.5;">Gaming Top Up Provider Malaysia</p>
+    </footer>
 
-<!-- ================= ML ================= -->
-<div id="ml" class="page">
-<div class="form">
-<h2>Mobile Legends</h2>
-<input id="ml_id" placeholder="User ID">
-<input id="ml_server" placeholder="Server ID">
+    <script>
+        const priceData = {
+            ml: [
+                {d: "140 Diamond", p: "RM9.90"}, {d: "165 Diamond", p: "RM13.50"}, {d: "182 Diamond", p: "RM15.20"},
+                {d: "210 Diamond", p: "RM16.60"}, {d: "284 Diamond", p: "RM21.00"}, {d: "326 Diamond", p: "RM23.00"},
+                {d: "397 Diamond", p: "RM28.00"}, {d: "513 Diamond", p: "RM36.00"}, {d: "569 Diamond", p: "RM38.00"},
+                {d: "639 Diamond", p: "RM42.00"}, {d: "870 Diamond", p: "RM59.00"}, {d: "1071 Diamond", p: "RM74.00"},
+                {d: "1145 Diamond", p: "RM77.30"}, {d: "1355 Diamond", p: "RM86"}, {d: "1446 Diamond", p: "RM91"}, {d: "1530 Diamond", p: "RM97"}
+            ],
+            ff: [
+                {d: "100 Diamond", p: "RM3.50"}, {d: "210 Diamond", p: "RM8.00"}, {d: "310 Diamond", p: "RM10.00"},
+                {d: "400 Diamond", p: "RM15.00"}, {d: "550 Diamond", p: "RM18.20"}, {d: "625 Diamond", p: "RM21.00"},
+                {d: "750 Diamond", p: "RM26.50"}, {d: "859 Diamond", p: "RM28.66"}, {d: "995 Diamond", p: "RM33.00"},
+                {d: "1040 Diamond", p: "RM35.00"}, {d: "1130 Diamond", p: "RM48.95"}, {d: "1580 Diamond", p: "RM52.65"},
+                {d: "2180 Diamond", p: "RM70.50"}, {d: "2200 Diamond", p: "RM85.00"}, {d: "3240 Diamond", p: "RM105.40"},
+                {d: "4360 Diamond", p: "RM141.00"}, {d: "5600 Diamond", p: "RM175.50"}
+            ],
+            efb: [
+                {d: "130 Coin", p: "RM4.90"}, {d: "300 Coin", p: "RM10.55"}, {d: "550 Coin", p: "RM18.90"},
+                {d: "750 Coin", p: "RM25.02"}, {d: "1040 Coin", p: "RM35.00"}, {d: "2130 Coin", p: "RM69.0"},
+                {d: "3250 Coin", p: "RM102.00"}, {d: "5700 Coin", p: "RM168.20"}
+            ],
+            pubg: [
+                {d: "60 UC", p: "RM4.00"}, {d: "300+25 UC", p: "RM19.02"}, {d: "600+60 UC", p: "RM38.20"},
+                {d: "1500+300 UC", p: "RM95.30"}, {d: "3000+850 UC", p: "RM190.00"}, {d: "6000+2100 UC", p: "RM379.20"},
+                {d: "12000+4200 UC", p: "RM758.00"}, {d: "18000+6300 UC", p: "RM1136.20"}, {d: "24000+8400 UC", p: "RM1515.00"}, {d: "30000+10500 UC", p: "RM1894.00"}
+            ]
+        };
 
-<div class="list">
-<div class="item" onclick="pick(this)"> <div class="amount">140 Diamond</div><div class="price">RM9.90</div></div>
-<div class="item" onclick="pick(this)"> <div class="amount">165 Diamond</div><div class="price">RM13.50</div></div>
-<div class="item" onclick="pick(this)"> <div class="amount">182 Diamond</div><div class="price">RM15.20</div></div>
-<div class="item" onclick="pick(this)"> <div class="amount">210 Diamond</div><div class="price">RM16.60</div></div>
-<div class="item" onclick="pick(this)"> <div class="amount">284 Diamond</div><div class="price">RM21.00</div></div>
-<div class="item" onclick="pick(this)"> <div class="amount">326 Diamond</div><div class="price">RM23.00</div></div>
-<div class="item" onclick="pick(this)"> <div class="amount">397 Diamond</div><div class="price">RM28.00</div></div>
-<div class="item" onclick="pick(this)"> <div class="amount">513 Diamond</div><div class="price">RM36.00</div></div>
-<div class="item" onclick="pick(this)"> <div class="amount">569 Diamond</div><div class="price">RM38.00</div></div>
-<div class="item" onclick="pick(this)"> <div class="amount">639 Diamond</div><div class="price">RM42.00</div></div>
-<div class="item" onclick="pick(this)"> <div class="amount">870 Diamond</div><div class="price">RM59.00</div></div>
-<div class="item" onclick="pick(this)"> <div class="amount">1071 Diamond</div><div class="price">RM74.00</div></div>
-<div class="item" onclick="pick(this)"> <div class="amount">1145 Diamond</div><div class="price">RM77.30</div></div>
-<div class="item" onclick="pick(this)"> <div class="amount">1355 Diamond</div><div class="price">RM86.00</div></div>
-<div class="item" onclick="pick(this)"> <div class="amount">1446 Diamond</div><div class="price">RM91.00</div></div>
-<div class="item" onclick="pick(this)"> <div class="amount">1530 Diamond</div><div class="price">RM97.00</div></div>
-</div>
+        let selectedGame = "";
+        let selectedItem = "";
+        let selectedPrice = "";
+        let selectedPay = "";
 
-<div class="btn" onclick="submitOrder('Mobile Legends')">SUBMIT ORDER</div>
-<div class="btn" onclick="back()">← Kembali</div>
-</div>
-</div>
+        function openGame(game) {
+            selectedGame = game;
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'block';
+            window.scrollTo(0,0);
 
-<!-- ================= FF ================= -->
-<div id="ff" class="page">
-<div class="form">
-<h2>Free Fire</h2>
-<input id="ff_id" placeholder="User ID">
+            const names = {ml: 'Mobile Legends', ff: 'Free Fire', pubg: 'PUBG Mobile', efb: 'eFootball 2024'};
+            document.getElementById('gameTitle').innerText = names[game];
 
-<div class="list">
-<div class="item" onclick="pick(this)"><div class="amount">100 Diamond</div><div class="price">RM3.50</div></div>
-<div class="item" onclick="pick(this)"><div class="amount">210 Diamond</div><div class="price">RM8.00</div></div>
-<div class="item" onclick="pick(this)"><div class="amount">310 Diamond</div><div class="price">RM10.00</div></div>
-<div class="item" onclick="pick(this)"><div class="amount">400 Diamond</div><div class="price">RM15.00</div></div>
-<div class="item" onclick="pick(this)"><div class="amount">550 Diamond</div><div class="price">RM18.20</div></div>
-<div class="item" onclick="pick(this)"><div class="amount">625 Diamond</div><div class="price">RM21.00</div></div>
-<div class="item" onclick="pick(this)"><div class="amount">750 Diamond</div><div class="price">RM26.50</div></div>
-<div class="item" onclick="pick(this)"><div class="amount">859 Diamond</div><div class="price">RM28.66</div></div>
-<div class="item" onclick="pick(this)"><div class="amount">995 Diamond</div><div class="price">RM33.00</div></div>
-<div class="item" onclick="pick(this)"><div class="amount">1040 Diamond</div><div class="price">RM35.00</div></div>
-<div class="item" onclick="pick(this)"><div class="amount">1130 Diamond</div><div class="price">RM48.95</div></div>
-<div class="item" onclick="pick(this)"><div class="amount">1580 Diamond</div><div class="price">RM52.65</div></div>
-<div class="item" onclick="pick(this)"><div class="amount">2180 Diamond</div><div class="price">RM70.50</div></div>
-<div class="item" onclick="pick(this)"><div class="amount">2200 Diamond</div><div class="price">RM85.00</div></div>
-<div class="item" onclick="pick(this)"><div class="amount">3240 Diamond</div><div class="price">RM105.40</div></div>
-<div class="item" onclick="pick(this)"><div class="amount">4360 Diamond</div><div class="price">RM141.00</div></div>
-<div class="item" onclick="pick(this)"><div class="amount">5600 Diamond</div><div class="price">RM175.50</div></div>
-</div>
+            let form = "";
+            if(game==='ml') form = '<input type="number" id="id1" placeholder="User ID"><input type="number" id="id2" placeholder="Zone ID">';
+            else if(game==='ff') form = '<input type="number" id="id1" placeholder="Player ID">';
+            else if(game==='pubg') form = '<input type="number" id="id1" placeholder="Character ID">';
+            else form = '<input type="text" id="id1" placeholder="Email Konami"><input type="text" id="id2" placeholder="Password"><input type="text" id="id3" placeholder="Device"><input type="text" id="id4" placeholder="In Game Name">';
+            document.getElementById('dynamicForm').innerHTML = form;
 
-<div class="btn" onclick="submitOrder('Free Fire')">SUBMIT ORDER</div>
-<div class="btn" onclick="back()">← Kembali</div>
-</div>
-</div>
+            let list = "";
+            priceData[game].forEach(item => {
+                list += `<div class="diamond-item" onclick="selectDiamond(this, '${item.d}', '${item.p}')">
+                    <b>${item.d}</b><br><small>${item.p}</small>
+                </div>`;
+            });
+            document.getElementById('diamondList').innerHTML = list;
+        }
 
-<!-- ================= PUBG ================= -->
-<div id="pubg" class="page">
-<div class="form">
-<h2>PUBG Mobile</h2>
-<input id="pubg_id" placeholder="Player ID">
+        function goBack() {
+            document.getElementById('page1').style.display = 'block';
+            document.getElementById('page2').style.display = 'none';
+        }
 
-<div class="list">
-  <div class="item" onclick="pick(this)"><div class="amount">60 UC</div><div class="price">RM5.00</div></div>
-  <div class="item" onclick="pick(this)"><div class="amount">120 UC</div><div class="price">RM9.50</div></div>
-  <div class="item" onclick="pick(this)"><div class="amount">325 UC</div><div class="price">RM25.00</div></div>
-  <div class="item" onclick="pick(this)"><div class="amount">660 UC</div><div class="price">RM49.00</div></div>
-  <div class="item" onclick="pick(this)"><div class="amount">720 UC</div><div class="price">RM55.00</div></div>
-  <div class="item" onclick="pick(this)"><div class="amount">1800 UC</div><div class="price">RM129.00</div></div>
-  <div class="item" onclick="pick(this)"><div class="amount">3850 UC</div><div class="price">RM269.00</div></div>
-  <div class="item" onclick="pick(this)"><div class="amount">8100 UC</div><div class="price">RM529.00</div></div>
-</div>
+        function selectDiamond(el, name, price) {
+            document.querySelectorAll('.diamond-item').forEach(d => d.classList.remove('selected'));
+            el.classList.add('selected');
+            selectedItem = name; selectedPrice = price;
+        }
 
-<div class="btn" onclick="submitOrder('PUBG Mobile')">SUBMIT ORDER</div>
-<div class="btn" onclick="back()">← Kembali</div>
-</div>
-</div>
+        function selectPay(el, name) {
+            document.querySelectorAll('.pay-item').forEach(p => p.classList.remove('selected'));
+            el.classList.add('selected');
+            selectedPay = name;
+        }
 
-<!-- ================= eFOOTBALL ================= -->
-<div id="efb" class="page">
-<div class="form">
-<h2>eFootball</h2>
+        function toggleFaq(el) {
+            const item = el.parentElement;
+            item.classList.toggle('active');
+        }
 
-<input id="efb_email" placeholder="Email">
-<input id="efb_pass" type="password" placeholder="Password">
-<input id="efb_device" placeholder="Device (Android / iOS)">
-<input id="efb_ign" placeholder="In Game Name">
+        function sendOrder() {
+            if(!selectedItem || !selectedPay) return alert("Sila pilih item dan pembayaran!");
+            
+            let account = "";
+            if(selectedGame === 'ml') account = `ID: ${document.getElementById('id1').value} (${document.getElementById('id2').value})`;
+            else if(selectedGame === 'ff' || selectedGame === 'pubg') account = `ID: ${document.getElementById('id1').value}`;
+            else account = `Email: ${document.getElementById('id1').value}\nPass: ${document.getElementById('id2').value}\nDev: ${document.getElementById('id3').value}\nIGN: ${document.getElementById('id4').value}`;
 
-<div class="list">
-  <div class="item" onclick="pick(this)"><div class="amount">130 Coins</div><div class="price">RM4.90</div></div>
-  <div class="item" onclick="pick(this)"><div class="amount">300 Coins</div><div class="price">RM10.55</div></div>
-  <div class="item" onclick="pick(this)"><div class="amount">550 Coins</div><div class="price">RM18.90</div></div>
-  <div class="item" onclick="pick(this)"><div class="amount">750 Coins</div><div class="price">RM25.02</div></div>
-  <div class="item" onclick="pick(this)"><div class="amount">1040 Coins</div><div class="price">RM35.00</div></div>
-  <div class="item" onclick="pick(this)"><div class="amount">2130 Coins</div><div class="price">RM69.00</div></div>
-  <div class="item" onclick="pick(this)"><div class="amount">3250 Coins</div><div class="price">RM102.00</div></div>
-  <div class="item" onclick="pick(this)"><div class="amount">5700 Coins</div><div class="price">RM168.20</div></div>
-</div>
-
-<div class="btn" onclick="submitOrder('eFootball')">SUBMIT ORDER</div>
-<div class="btn" onclick="back()">← Kembali</div>
-</div>
-</div>
-
-<!-- ================= FLOAT ================= -->
-<div class="float">
-<a class="wa" href="https://wa.me/60175180249">💬</a>
-<a class="tg" href="https://t.me/madindindun0">✈️</a>
-</div>
-
-<script>
-let selectedText="";
-
-function openPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
-
-function back(){openPage('home')}
-
-function pick(el){
-  document.querySelectorAll('.item').forEach(i=>i.classList.remove('active'));
-  el.classList.add('active');
-  selectedText = el.innerText;
-}
-
-function submitOrder(game){
-  if(!selectedText){alert("Sila pilih item");return}
-  let msg = `${game}\n${selectedText}`;
-  window.open(`https://wa.me/60175180249?text=${encodeURIComponent(msg)}`);
-}
-</script>
-
+            const text = `*ORDER BARU - DIEY STORE*\n\nGame: ${selectedGame.toUpperCase()}\nDetail: ${account}\nItem: ${selectedItem}\nHarga: ${selectedPrice}\nBayar: ${selectedPay}`;
+            window.open(`https://wa.me/60175180249?text=${encodeURIComponent(text)}`);
+        }
+    </script>
 </body>
 </html>
